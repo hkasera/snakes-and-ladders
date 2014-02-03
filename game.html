@@ -1,0 +1,85 @@
+<html ng-app="snlApp">
+  <head>
+    <script src="js/angular.js">
+    </script>
+    <script src="js/angular-route.js">
+    </script>
+    <script src="js/controller.js">
+    </script>
+    <style>
+      .snl-board{
+        height:500px;
+        width:500px;
+      }
+      .snl-square{
+        width: 50px;
+        height:50px;
+        line-height:50px;
+        text-align:center;
+        display: inline-block;
+        list-style-type: none;
+      }
+      .fright{
+        float:right;
+      }
+      .red{
+        background:red;
+      }
+      .green{
+        background:green;
+      }
+      .active{
+        background:yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div ng-controller="BoardCtrl">
+      <ul class="snl-board">
+        <li class="snl-square" ng-class="{fright : square.isEven === true,red: square.start >
+square.end, green:square.start 
+< square.end,active:square.start === currentPos}" ng-repeat="square in board">
+  {{square.start + 1}}
+   </li>
+   </ul>
+  </div>
+  <div ng-controller="BtnCtrl">
+    <button ng-click="rollDice()">
+      Roll Dice
+    </button>
+    <div>
+      {{diceValues[0]}}
+    </div>
+    <div>
+      {{diceValues[1]}}
+    </div>
+    <button ng-click="makeMove()">
+      Make Move
+    </button>
+  </div>
+  <div>
+    Your current position is {{currentPos + 1}}
+  </div>
+  <div>
+    Red squares are snakes
+  </div>
+  <div>
+    Green squares are ladders
+  </div>
+  <div>
+    The "Ladders": 14->
+    48, 19->
+    60, 55->
+    76, 69->
+    90, 78->
+    97
+  </div>
+  <div>
+    The "Snakes": 99->
+    29, 47->
+    18, 25->
+    7
+  </div>
+  
+  </body>
+</html>
